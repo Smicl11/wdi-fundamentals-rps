@@ -22,13 +22,11 @@ function randomPlay() {
 ////////////////////////////////////////////////
 
 function getPlayerMove(move) {
-   if (move === null || undefined) getInput();
-   else return move;
+   return move || getInput();
 }
 
 function getComputerMove(move) {
-    if (move === null || undefined) randomPlay();
-    else return move;
+    return move || randomPlay();
 }
 
 function getWinner(playerMove,computerMove) {
@@ -51,6 +49,25 @@ function playToFive() {
     var computerWins = 0;
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
     /* YOUR CODE HERE */
+    var round = 0;
+    var playerMove = getPlayerMove();
+    while ((playerWins < 5) && (computerWins < 5)){ 
+        var computerMove = getComputerMove();
+        var winner = getWinner(playerMove,computerMove);
+            if (winner === 'player') {
+                playerWins +=1;
+                round +=1;
+                console.log("Round: " + round + " Player: " + playerMove +". Computer: " + computerMove + ". Player Wins. Score is " + "Player: " + playerWins + ", Computer " + computerWins);
+            } else if (winner === 'computer') {
+                computerWins +=1;
+                round +=1;
+                console.log("Round: " + round + " Player: " + playerMove +". Computer: " + computerMove + ". Computer Wins. Score is " + "Player: " + playerWins + ", Computer " + computerWins);
+            } else {
+                round +=1;
+                console.log("Round: " + round + " It's a tie. Score remains Player: " + playerWins + " Computer: " + computerWins + ".");
+            }
+    }
     return [playerWins, computerWins];
 }
 
+playToFive();
