@@ -33,11 +33,13 @@ function getWinner(playerMove,computerMove) {
     var winner;
     if (playerMove === computerMove) {
         winner = 'tie';
-    } else if (((playerMove === 'rock')&&(computerMove === 'scissors')) || 
+    } 
+    else if (((playerMove === 'rock')&&(computerMove === 'scissors')) || 
             ((playerMove === 'scissors')&&(computerMove === 'paper')) || 
             ((playerMove === 'paper')&&(computerMove === 'rock'))) {
         winner = 'player';
-    } else {
+    } 
+    else {
         winner = 'computer';
     }
     return winner;
